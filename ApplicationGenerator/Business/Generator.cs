@@ -4,7 +4,6 @@ namespace ApplicationGenerator.Business;
 
 public class Generator
 {
-    public string CreateCommandHandlerTemplatePath = "";
     public static bool CreateCsFiles()
     {
         var currentDirectory = Directory.GetCurrentDirectory();
@@ -37,14 +36,14 @@ public class Generator
             for (int j = 0; i < Template.Commands.Length; i++)
             {
                 var command = Template.Commands[j];
-                var fileName = command + entityName + "Command";
+                var fileName = command + entityName + Template.Operations.Command;
                 File.Create(pathCommands + fileName + ".cs");
                 File.Create(pathCommands + fileName + "Handler.cs");
             }
             for (int j = 0; i < Template.Queries.Length; i++)
             {
                 var query = Template.Queries[j];
-                var fileName = query + entityName + "Query";
+                var fileName = query + entityName + Template.Operations.Query;
                 File.Create(pathQueries + fileName + ".cs");
                 File.Create(pathQueries + fileName + "Handler.cs");
             }
