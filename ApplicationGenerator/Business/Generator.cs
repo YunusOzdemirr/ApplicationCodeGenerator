@@ -1,10 +1,11 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography;
+using System.Text;
 
 namespace ApplicationGenerator.Business;
 
 public class Generator
 {
-    public static bool CreateCsFiles()
+    public static bool CreateFeatureCsFiles()
     {
         var currentDirectory = Directory.GetCurrentDirectory();
         var splittedDirectory = currentDirectory.Split(".");
@@ -22,7 +23,7 @@ public class Generator
             Directory.CreateDirectory(sb.ToString());
 
         var entityNames = EntityLocator.GetEntityNames();
-       
+
         for (int i = 0; i < entityNames.Length; i++)
         {
             var entityName = entityNames[i];
@@ -37,18 +38,42 @@ public class Generator
             {
                 var command = Template.Commands[j];
                 var fileName = command + entityName + Template.Operations.Command;
-                File.Create(pathCommands + fileName + ".cs");
+                var commandPath = pathCommands + fileName + ".cs";
+                File.Create(commandPath);
+                SetFields(commandPath, entityName);
                 File.Create(pathCommands + fileName + "Handler.cs");
             }
             for (int j = 0; i < Template.Queries.Length; i++)
             {
                 var query = Template.Queries[j];
                 var fileName = query + entityName + Template.Operations.Query;
-                File.Create(pathQueries + fileName + ".cs");
+                var queryPath = pathQueries + fileName + ".cs";
+                File.Create(queryPath);
+                SetFields(queryPath, entityName);
                 File.Create(pathQueries + fileName + "Handler.cs");
             }
 
         }
         return true;
     }
+
+    public static void SetFields(string path, string entityName)
+    {
+        var commandContent = File.ReadAllLines(path)!;
+        var properties = EntityLocator.GetEntityProperties(entityName);
+        for (int i = 0; i < commandContent.Length; i++)
+        {
+            string line = commandContent[i]!;
+            if (!line.Contains("*"))
+                continue;
+            StringBuilder sb = new StringBuilder();
+            sb.Append(line);
+            foreach (var property in properties)
+            {
+                sb.Append('\n');
+                sb.Append("public " + property.Key + " " + property.Value + " { get; set; }");
+            }
+        }
+    }
+
 }
