@@ -1,0 +1,22 @@
+﻿using {RootNameSpace}.Domain.Entities;
+
+namespace {RootNameSpace}.Application.Features.Commands.{EntityName}Commands;
+
+public class Create{EntityName}CommandHandler : IRequestHandler<Create{EntityName}Command, Unit>
+{
+    private readonly I{EntityName}Repository _{EntityName}Repository;
+    private readonly IMapper _mapper;
+
+    public Create{EntityName}CommandHandler(IMapper mapper, I{EntityName}Repository {EntityName}Repository)
+    {
+        _mapper = mapper;
+        _{EntityName}Repository = {EntityName}Repository;
+    }
+
+    public async Task<Unit> Handle(Create{EntityName}Command request, CancellationToken cancellationToken)
+    {
+        var {EntityName} = _mapper.Map<{EntityName}>(request);
+        await _{EntityName}Repository.AddAsync({EntityName});
+        return Unit.Value;
+    }
+}
