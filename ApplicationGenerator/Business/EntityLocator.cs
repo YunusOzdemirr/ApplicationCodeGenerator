@@ -16,7 +16,7 @@ public class EntityLocator
         var sb = new StringBuilder();
         sb.Append(rootProjectName);
         sb.Append(".Domain");
-        sb.Append(@"\Entities\");
+        sb.Append(@"/Entities/");
         return sb.ToString();
     }
 
@@ -27,7 +27,7 @@ public class EntityLocator
         for (int i = 0; i < fileNames.Length; i++)
         {
             var fileName = fileNames[i];
-            var splittedNames = fileName.Split("\\");
+            var splittedNames = fileName.Split("/");
             var entityNameWithCs = splittedNames[splittedNames.Length - 1];
             string entityName = entityNameWithCs.Substring(0, entityNameWithCs.Length - 3);
             fileNames[i] = entityName;

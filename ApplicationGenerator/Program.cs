@@ -5,4 +5,4 @@ using ApplicationGenerator.Business;
 Console.WriteLine("Hello, World!");
 Class1.CreateHandlerCreated();
 var generator = new Generator();
-//generator.CreateFeatureCsFiles();
+generator.CreateFeatureCsFiles();

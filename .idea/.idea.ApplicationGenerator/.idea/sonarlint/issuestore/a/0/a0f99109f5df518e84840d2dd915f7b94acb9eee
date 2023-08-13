@@ -1,0 +1,21 @@
+
+mcsharpsquid:S1104	"DMake this field 'private' and encapsulate it in a 'public' property.(¿Î´«úÿÿÿÿ8ÁèÈ÷1
+mcsharpsquid:S1104
+"DMake this field 'private' and encapsulate it in a 'public' property.(ÑË§şøÿÿÿÿ8ÁèÈ÷1
+mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(ô¢üÿÿÿÿ8œäË÷1
+mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(»™ãÂúÿÿÿÿ8œäË÷1
+gcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(à“ì 8œäË÷1
+ocsharpsquid:S3218"KRename this field to not shadow the outer class' member with the same name.(ÖêİŠ8¼©Ç÷1
+ocsharpsquid:S3218"KRename this field to not shadow the outer class' member with the same name.(ôÍòÓ8¼©Ç÷1
+‡csharpsquid:S2386	"^Use an immutable collection or reduce the accessibility of the public static field 'Commands'.(¿Î´«úÿÿÿÿ8ÁèÈ÷1
+†csharpsquid:S2386
+"]Use an immutable collection or reduce the accessibility of the public static field 'Queries'.(ÑË§şøÿÿÿÿ8ÁèÈ÷1
+ncsharpsquid:S2223	"EChange the visibility of 'Commands' or make it 'const' or 'readonly'.(¿Î´«úÿÿÿÿ8ÁèÈ÷1
+mcsharpsquid:S2223
+"DChange the visibility of 'Queries' or make it 'const' or 'readonly'.(ÑË§şøÿÿÿÿ8ÁèÈ÷1
+ucsharpsquid:S2223"LChange the visibility of 'HandlerTemplate' or make it 'const' or 'readonly'.(ô¢üÿÿÿÿ8œäË÷1
+ucsharpsquid:S2223"LChange the visibility of 'RequestTemplate' or make it 'const' or 'readonly'.(»™ãÂúÿÿÿÿ8œäË÷1
+pcsharpsquid:S2223"MChange the visibility of 'RequestTemplates' or make it 'const' or 'readonly'.(à“ì 8œäË÷1
+Bcsharpsquid:S125"Remove this commented out code.(–Íİ€8ÁèÈ÷1
+Gcsharpsquid:S125"Remove this commented out code.(˜ÛÓîıÿÿÿÿ8ÂèÈ÷1
+Bcsharpsquid:S125"Remove this commented out code.(ëÒÚ˜8œäË÷1
