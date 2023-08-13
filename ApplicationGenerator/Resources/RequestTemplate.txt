@@ -1,0 +1,8 @@
+﻿using {RootNameSpace}.Domain.Entities;
+
+namespace {RootNameSpace}.Application.Features.{Type}s.{EntityName}{Type}s;
+
+public class {Crud}{EntityName}{Type} : IRequest<Unit>
+{
+*
+}

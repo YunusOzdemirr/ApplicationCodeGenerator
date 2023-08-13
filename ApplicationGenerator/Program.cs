@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using ApplicationGenerator;
 using ApplicationGenerator.Business;
 
 Console.WriteLine("Hello, World!");
-var generator=new Generator();
-generator.CreateFeatureCsFiles();
+Class1.CreateHandlerCreated();
+var generator = new Generator();
+//generator.CreateFeatureCsFiles();

@@ -24,7 +24,6 @@ public class Generator
             Directory.CreateDirectory(sb.ToString());
 
         var entityNames = EntityLocator.GetEntityNames();
-
         for (int i = 0; i < entityNames.Length; i++)
         {
             var entityName = entityNames[i];
@@ -38,10 +37,10 @@ public class Generator
             for (int j = 0; j < Template.Commands.Length; j++)
             {
                 var command = Template.Commands[j];
-                var fileName = command + entityName + Template.Operations.Command;
+                var fileName = command + entityName + Template.Types.Command;
                 var commandPath = pathCommands + fileName + ".cs";
                 var fileStream = File.Create(commandPath);
-                SetFields(fileStream, entityName, true);
+                SetFields(fileStream, entityName, "Command",command);
                 fileStream.Dispose();
                 //var fileStreamHandler = File.Create(pathCommands + fileName + "Handler.cs");
                 //SetHandler(fileStream, entityName);
@@ -50,10 +49,10 @@ public class Generator
             for (int j = 0; j < Template.Queries.Length; j++)
             {
                 var query = Template.Queries[j];
-                var fileName = query + entityName + Template.Operations.Query;
+                var fileName = query + entityName + Template.Types.Query;
                 var queryPath = pathQueries + fileName + ".cs";
                 var fileStream = File.Create(queryPath);
-                SetFields(fileStream, entityName, false);
+                SetFields(fileStream, entityName, "Quer",query);
                 fileStream.Dispose();
                 //var fileStreamHandler = File.Create(pathQueries + fileName + "Handler.cs");
                 //SetHandler(fileStream, entityName);
@@ -63,17 +62,15 @@ public class Generator
         }
         return true;
     }
-    private void SetFields(FileStream fileStream, string entityName, bool IsCommand)
+    private void SetFields(FileStream fileStream, string entityName, string type, string operation)
     {
         using (StreamReader reader = new StreamReader(fileStream))
         {
             using (StreamWriter writer = new StreamWriter(fileStream))
             {
-                string[] lines = { };
-                if (IsCommand)
-                    lines = Template.CreateCommandTemplate.Split("\n");
-                else
-                    lines = Template.CreateQueryTemplate.Split("\n");
+                string[] lines = Template.RequestTemplate.Split("\n");
+                if (type == "Quer")
+                    lines= Template.RequestTemplates.Split("\n");
                 var properties = EntityLocator.GetEntityProperties(entityName);
                 for (int i = 0; i < lines.Length; i++)
                 {
@@ -89,7 +86,8 @@ public class Generator
                         var rootName = splittedRootName[splittedRootName.Length - 1];
                         line = line.Replace("{RootNameSpace}", rootName);
                         line = line.Replace("{EntityName}", entityName);
-                            line = line.Replace("Get", "Search");
+                        line = line.Replace("{Crud}", operation);
+                        line = line.Replace("{Type}", type);
                         writer.WriteLine(line);
                         continue;
                     }
@@ -118,7 +116,7 @@ public class Generator
         {
             using (StreamWriter writer = new StreamWriter(fileStream))
             {
-                var lines = Template.CreateCommandTemplate.Split("\n");
+                //var lines = Template.CreateCommandTemplate.Split("\n");
 
             }
         }
