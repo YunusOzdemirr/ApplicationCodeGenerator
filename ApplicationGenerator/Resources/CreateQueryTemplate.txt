@@ -1,0 +1,8 @@
+﻿using {RootNameSpace}.Domain.Entities;
+
+namespace {RootNameSpace}.Application.Features.Queries.{EntityName}Queries;
+
+public class Get{EntityName}Query : IRequest<Unit>
+{
+*
+}

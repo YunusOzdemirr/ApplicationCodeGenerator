@@ -2,10 +2,13 @@
 
 public partial class Template
 {
+    public const string Path = @"C:\\Users\\yunus\\Documents\\GitHub\\beryque\\Business\\Beryque.Application";
     public static string[] Commands = { "Create", "Update", "Delete" };
     public static string[] Queries = { "Get", "Search" };
-    public string CreateCommandHandlerTemplate = File.ReadAllText(Directory.GetCurrentDirectory() + @"\CreateCommandHandlerTemplate");
-    public string CreateCommandTemplate = File.ReadAllText(Directory.GetCurrentDirectory() + @"\CreateCommandTemplate");
+
+    public static string CreateCommandHandlerTemplate = File.ReadAllText(@"C:\\Users\\yunus\\Documents\\GitHub\\ApplicationCodeGenerator\\ApplicationGenerator\\Resources\\CreateCommandHandlerTemplate.txt");
+    public static string CreateCommandTemplate = File.ReadAllText(@"C:\Users\yunus\Documents\GitHub\ApplicationCodeGenerator\ApplicationGenerator\Resources\CreateCommandTemplate.txt");
+    public static string CreateQueryTemplate = File.ReadAllText(@"C:\Users\yunus\Documents\GitHub\ApplicationCodeGenerator\ApplicationGenerator\Resources\CreateQueryTemplate.txt");
     public struct Operations
     {
         public const string Command = "Command";

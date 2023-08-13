@@ -1,17 +1,18 @@
-﻿using System.Security.Cryptography;
-using System.Text;
+﻿using System.Text;
 
 namespace ApplicationGenerator.Business;
 
 public class Generator
 {
-    public static bool CreateFeatureCsFiles()
+    public bool CreateFeatureCsFiles()
     {
-        var currentDirectory = Directory.GetCurrentDirectory();
+        //var currentDirectory = Directory.GetCurrentDirectory();
+        var currentDirectory = Template.Path;
         var splittedDirectory = currentDirectory.Split(".");
+        //  var splittedRootName = splittedDirectory[0].Split('\\');
         if (splittedDirectory.Length < 1)
             return false;
-        var rootProjectName = splittedDirectory[0] + splittedDirectory[1];
+        var rootProjectName = splittedDirectory[0] + "." + splittedDirectory[1];
         var sb = new StringBuilder();
         sb.Append(rootProjectName);
         sb.Append(@"\Features\");
@@ -34,46 +35,92 @@ public class Generator
             if (!Path.Exists(pathQueries))
                 Directory.CreateDirectory(pathQueries);
 
-            for (int j = 0; i < Template.Commands.Length; i++)
+            for (int j = 0; j < Template.Commands.Length; j++)
             {
                 var command = Template.Commands[j];
                 var fileName = command + entityName + Template.Operations.Command;
                 var commandPath = pathCommands + fileName + ".cs";
-                File.Create(commandPath);
-                SetFields(commandPath, entityName);
-                File.Create(pathCommands + fileName + "Handler.cs");
+                var fileStream = File.Create(commandPath);
+                SetFields(fileStream, entityName, true);
+                fileStream.Dispose();
+                //var fileStreamHandler = File.Create(pathCommands + fileName + "Handler.cs");
+                //SetHandler(fileStream, entityName);
+                //fileStreamHandler.Dispose();
             }
-            for (int j = 0; i < Template.Queries.Length; i++)
+            for (int j = 0; j < Template.Queries.Length; j++)
             {
                 var query = Template.Queries[j];
                 var fileName = query + entityName + Template.Operations.Query;
                 var queryPath = pathQueries + fileName + ".cs";
-                File.Create(queryPath);
-                SetFields(queryPath, entityName);
-                File.Create(pathQueries + fileName + "Handler.cs");
+                var fileStream = File.Create(queryPath);
+                SetFields(fileStream, entityName, false);
+                fileStream.Dispose();
+                //var fileStreamHandler = File.Create(pathQueries + fileName + "Handler.cs");
+                //SetHandler(fileStream, entityName);
+                //fileStreamHandler.Dispose();
             }
 
         }
         return true;
     }
-
-    public static void SetFields(string path, string entityName)
+    private void SetFields(FileStream fileStream, string entityName, bool IsCommand)
     {
-        var commandContent = File.ReadAllLines(path)!;
-        var properties = EntityLocator.GetEntityProperties(entityName);
-        for (int i = 0; i < commandContent.Length; i++)
+        using (StreamReader reader = new StreamReader(fileStream))
         {
-            string line = commandContent[i]!;
-            if (!line.Contains("*"))
-                continue;
-            StringBuilder sb = new StringBuilder();
-            sb.Append(line);
-            foreach (var property in properties)
+            using (StreamWriter writer = new StreamWriter(fileStream))
             {
-                sb.Append('\n');
-                sb.Append("public " + property.Key + " " + property.Value + " { get; set; }");
+                string[] lines = { };
+                if (IsCommand)
+                    lines = Template.CreateCommandTemplate.Split("\n");
+                else
+                    lines = Template.CreateQueryTemplate.Split("\n");
+                var properties = EntityLocator.GetEntityProperties(entityName);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    string line = lines[i];
+
+                    if (line.Contains("RootNameSpace") || line.Contains("EntityName"))
+                    {
+                        var currentDirectory = Template.Path;
+                        var splittedDirectory = currentDirectory.Split(".");
+                        if (splittedDirectory.Length < 1)
+                            break;
+                        var splittedRootName = splittedDirectory[0].Split('\\');
+                        var rootName = splittedRootName[splittedRootName.Length - 1];
+                        line = line.Replace("{RootNameSpace}", rootName);
+                        line = line.Replace("{EntityName}", entityName);
+                            line = line.Replace("Get", "Search");
+                        writer.WriteLine(line);
+                        continue;
+                    }
+
+                    if (!line.Contains("*"))
+                    {
+                        writer.WriteLine(line);
+                        continue;
+                    }
+
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var property in properties)
+                    {
+                        sb.Append('\n');
+                        sb.Append("    public " + property.Value + " " + property.Key + " { get; set; }");
+                    }
+                    line = sb.ToString();
+                    writer.WriteLine(line);
+                }
             }
         }
     }
+    private void SetHandler(FileStream fileStream, string entityName)
+    {
+        using (StreamReader reader = new StreamReader(fileStream))
+        {
+            using (StreamWriter writer = new StreamWriter(fileStream))
+            {
+                var lines = Template.CreateCommandTemplate.Split("\n");
 
+            }
+        }
+    }
 }
