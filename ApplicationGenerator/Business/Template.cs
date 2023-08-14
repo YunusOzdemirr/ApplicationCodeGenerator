@@ -2,20 +2,19 @@
 
 public partial class Template
 {
-    // public const string Path = @"C:\\Users\\yunus\\Documents\\GitHub\\beryque\\Business\\Beryque.Application";
-    public const string Path = @"/Users/yunus/Documents/GitHub/beryque/Business/Beryque.Application";
-    // public const string PathOfApplication = @"C:\\Users\\yunus\\Documents\\GitHub\\ApplicationCodeGenerator\\ApplicationGenerator\\Resources\\";
-    public const string PathOfApplication = @"/Users/yunus/Documents/GitHub/ApplicationCodeGenerator/ApplicationGenerator/Resources";
+    public const string Path = @"C:\\Users\\yunus\\Documents\\GitHub\\beryque\\Business\\Beryque.Application";
+    public const string PathOfApplication = @"C:\\Users\\yunus\\Documents\\GitHub\\ApplicationCodeGenerator\\ApplicationGenerator\\Resources\\";
+    //public const char Line = '/';
+    public const string Line = @"\";
+    //public const string Path = @"/Users/yunus/Documents/GitHub/beryque/Business/Beryque.Application";
+    //public const string PathOfApplication = @"/Users/yunus/Documents/GitHub/ApplicationCodeGenerator/ApplicationGenerator/Resources/";
     public static string[] Commands = { "Create", "Update", "Delete" };
     public static string[] Queries = { "Get", "Search" };
 
-    // public static string CreateCommandHandlerTemplate = File.ReadAllText(PathOfApplication+ "HandlerTemplate.txt");
-    // public static string CreateCommandTemplate = File.ReadAllText(PathOfApplication+ "RequestTemplate.txt");
-    // public static string CreateQueryTemplate = File.ReadAllText(PathOfApplication+ "RequestTemplates.txt");
-    public static string HandlerTemplate = File.ReadAllText(PathOfApplication +@"/HandlerTemplate.txt");
-    public static string RequestTemplate = File.ReadAllText(PathOfApplication+"/RequestTemplate.txt");
-    public static string RequestTemplates = File.ReadAllText(PathOfApplication+ "/RequestTemplates.txt");
-   
+    public static string HandlerTemplate = File.ReadAllText(PathOfApplication + "HandlerTemplate.txt");
+    public static string RequestTemplate = File.ReadAllText(PathOfApplication + "RequestTemplate.txt");
+    public static string RequestTemplates = File.ReadAllText(PathOfApplication + "RequestTemplates.txt");
+
     public struct Types
     {
         public const string Command = "Command";

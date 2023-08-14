@@ -15,20 +15,20 @@ public class Generator
         var rootProjectName = splittedDirectory[0] + "." + splittedDirectory[1];
         var sb = new StringBuilder();
         sb.Append(rootProjectName);
-        sb.Append(@"/Features/");
+        sb.Append(Template.Line + @"Features" + Template.Line);
         if (!Path.Exists(sb.ToString()))
             Directory.CreateDirectory(sb.ToString());
-        if (!Path.Exists(sb.ToString() + @"/Commands/"))
+        if (!Path.Exists(sb.ToString() + Template.Line + @"Commands" + Template.Line))
             Directory.CreateDirectory(sb.ToString());
-        if (!Path.Exists(sb.ToString() + @"/Queries/"))
+        if (!Path.Exists(sb.ToString() + Template.Line + @"Queries" + Template.Line))
             Directory.CreateDirectory(sb.ToString());
 
         var entityNames = EntityLocator.GetEntityNames();
         for (int i = 0; i < entityNames.Length; i++)
         {
             var entityName = entityNames[i];
-            var pathCommands = sb.ToString() + @"/Commands/" + entityName + @"Commands/";
-            var pathQueries = sb.ToString() + @"/Queries/" + entityName + @"Queries/";
+            var pathCommands = sb.ToString() + Template.Line + @"Commands" + Template.Line + entityName + @"Commands" + Template.Line;
+            var pathQueries = sb.ToString() + Template.Line + @"Queries" + Template.Line + entityName + @"Queries" + Template.Line;
             if (!Path.Exists(pathCommands))
                 Directory.CreateDirectory(pathCommands);
             if (!Path.Exists(pathQueries))
@@ -84,7 +84,7 @@ public class Generator
                         var splittedDirectory = currentDirectory.Split(".");
                         if (splittedDirectory.Length < 1)
                             break;
-                        var splittedRootName = splittedDirectory[0].Split('/');
+                        var splittedRootName = splittedDirectory[0].Split(Template.Line);
                         var rootName = splittedRootName[splittedRootName.Length - 1];
                         line = line.Replace("{RootNameSpace}", rootName);
                         line = line.Replace("{EntityName}", entityName);
@@ -129,7 +129,7 @@ public class Generator
                     var splittedDirectory = currentDirectory.Split(".");
                     if (splittedDirectory.Length < 1)
                         break;
-                    var splittedRootName = splittedDirectory[0].Split('/');
+                    var splittedRootName = splittedDirectory[0].Split(Template.Line);
                     var rootName = splittedRootName[splittedRootName.Length - 1];
                     line = line.Replace("{RootNameSpace}", rootName);
                     line = line.Replace("{EntityName}", entityName);
