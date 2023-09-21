@@ -8,7 +8,7 @@ public class EntityLocator
     public static string GetEntityPath()
     {
         //var currentDirectory = Directory.GetCurrentDirectory();
-        var currentDirectory = Template.Path;
+        var currentDirectory = Template.PathApplication;
         var splittedDirectory = currentDirectory.Split(".");
         if (splittedDirectory.Length < 1)
             return null;
@@ -16,7 +16,7 @@ public class EntityLocator
         var sb = new StringBuilder();
         sb.Append(rootProjectName);
         sb.Append(".Domain");
-        sb.Append(@"/Entities/");
+        sb.Append(@"\\Entities\\");
         return sb.ToString();
     }
 
@@ -27,7 +27,7 @@ public class EntityLocator
         for (int i = 0; i < fileNames.Length; i++)
         {
             var fileName = fileNames[i];
-            var splittedNames = fileName.Split("/");
+            var splittedNames = fileName.Split(@"\");
             var entityNameWithCs = splittedNames[splittedNames.Length - 1];
             string entityName = entityNameWithCs.Substring(0, entityNameWithCs.Length - 3);
             fileNames[i] = entityName;
@@ -66,3 +66,10 @@ public class EntityLocator
         return keyValuePairs;
     }
 }
+
+
+
+
+
+
+
