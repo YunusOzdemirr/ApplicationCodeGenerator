@@ -7,13 +7,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec3a848f-2d36-4dd4-871c-fc7c377fd875" name="Changes" comment="" />
+    <list default="true" id="ec3a848f-2d36-4dd4-871c-fc7c377fd875" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/8/e/8e0b6f21cb61d8ac319ed60cdbf5fd625b3820ba" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/8/e/8e0b6f21cb61d8ac319ed60cdbf5fd625b3820ba" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/a/0/a0f99109f5df518e84840d2dd915f7b94acb9eee" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/a/0/a0f99109f5df518e84840d2dd915f7b94acb9eee" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/b/2/b24ef0cb9903831ab3521ae778a73a9223870c27" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/f/f/ff0fbaabb3a0ac94322809630f3881e555ad7885" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/securityhotspotstore/b/2/b24ef0cb9903831ab3521ae778a73a9223870c27" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/securityhotspotstore/f/f/ff0fbaabb3a0ac94322809630f3881e555ad7885" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationGenerator/Business/EntityLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/Business/EntityLocator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationGenerator/Business/Generator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/Business/Generator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationGenerator/Business/Template.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/Business/Template.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationGenerator/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationGenerator/Resources/ControllerTemplate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/Resources/ControllerTemplate.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationGenerator/SourceGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/SourceGenerator.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/ApplicationGenerator/Business/Generator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/46d871278ea62444f95722abff249decc5e4e6e34179299266749faef38a327/FileSystemEnumerator.Unix.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5cf396ad80f2a5878415ac224dad95e8e831f6ada6b8dac9ef7c3d17eb993911/SafeFileHandle.Unix.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/81aa6a5761dda78d34bfff10b1c9d5ba1a938a4a62b8928eceaa29f317c73d/StreamWriter.cs" root0="SKIP_HIGHLIGHTING" />
@@ -27,19 +44,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ApplicationGenerator" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -84,6 +101,12 @@
       <option name="presentableId" value="Default" />
       <updated>1691928669080</updated>
       <workItem from="1691928670956" duration="3205000" />
+      <workItem from="1695474524749" duration="1657000" />
+      <workItem from="1695476224067" duration="68000" />
+      <workItem from="1695476333159" duration="13000" />
+      <workItem from="1695476398610" duration="128000" />
+      <workItem from="1695476567417" duration="156000" />
+      <workItem from="1695477129905" duration="201000" />
     </task>
     <servers />
   </component>

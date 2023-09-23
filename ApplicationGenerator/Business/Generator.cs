@@ -4,6 +4,34 @@ namespace ApplicationGenerator.Business;
 
 public class Generator
 {
+    public void CreateControllersFiles()
+    {
+        var currentDirectory = Template.PathAPI;
+        var splittedDirectory = currentDirectory.Split(".");
+        if (splittedDirectory.Length < 1)
+            return;
+        var rootProjectName = splittedDirectory[0] + "." + splittedDirectory[1];
+        var sb = new StringBuilder();
+        sb.Append(rootProjectName);
+        sb.Append(Template.Line + "Controllers" + Template.Line);
+        if (!Path.Exists(sb.ToString()))
+            Directory.CreateDirectory(sb.ToString());
+
+        var entityNames = EntityLocator.GetEntityNames();
+        var template = Template.ControllerTemplate;
+        for (int i = 0; i < entityNames.Length; i++)
+        {
+            var entityName = entityNames[i];
+            for (int j = 0; j < Template.Commands.Length; j++)
+            {
+                var fileName = entityName + "sController";
+                var commandPath = sb + fileName + ".cs";
+                var fileStream = File.Create(commandPath);
+                Replace(fileStream, entityName, template);
+                fileStream.Dispose();
+            }
+        }
+    }
 
     public bool CreateRequestsCsFiles()
     {
@@ -16,7 +44,7 @@ public class Generator
         var rootProjectName = splittedDirectory[0] + "." + splittedDirectory[1];
         var sb = new StringBuilder();
         sb.Append(rootProjectName);
-        sb.Append(Template.Line + "ViewModels" + Template.Line + "Requests"+Template.Line);
+        sb.Append(Template.Line + "ViewModels" + Template.Line + "Requests" + Template.Line);
         if (!Path.Exists(sb.ToString()))
             Directory.CreateDirectory(sb.ToString());
         if (!Path.Exists(sb.ToString() + Template.Line + @"Requests" + Template.Line))
@@ -27,8 +55,10 @@ public class Generator
         for (int i = 0; i < entityNames.Length; i++)
         {
             var entityName = entityNames[i];
-            var pathCommands = sb.ToString() + Template.Line + @"Commands" + Template.Line + entityName + @"Commands" + Template.Line;
-            var pathQueries = sb.ToString() + Template.Line + @"Queries" + Template.Line + entityName + @"Queries" + Template.Line;
+            var pathCommands = sb.ToString() + Template.Line + @"Commands" + Template.Line + entityName + @"Commands" +
+                               Template.Line;
+            var pathQueries = sb.ToString() + Template.Line + @"Queries" + Template.Line + entityName + @"Queries" +
+                              Template.Line;
 
             if (!Path.Exists(pathCommands))
                 Directory.CreateDirectory(pathCommands);
@@ -83,8 +113,10 @@ public class Generator
         for (int i = 0; i < entityNames.Length; i++)
         {
             var entityName = entityNames[i];
-            var pathCommands = sb.ToString() + Template.Line + @"Commands" + Template.Line + entityName + @"Commands" + Template.Line;
-            var pathQueries = sb.ToString() + Template.Line + @"Queries" + Template.Line + entityName + @"Queries" + Template.Line;
+            var pathCommands = sb.ToString() + Template.Line + @"Commands" + Template.Line + entityName + @"Commands" +
+                               Template.Line;
+            var pathQueries = sb.ToString() + Template.Line + @"Queries" + Template.Line + entityName + @"Queries" +
+                              Template.Line;
             if (!Path.Exists(pathCommands))
                 Directory.CreateDirectory(pathCommands);
             if (!Path.Exists(pathQueries))
@@ -118,6 +150,30 @@ public class Generator
         }
 
         return true;
+    }
+
+    private void Replace(FileStream fileStream, string entityName, string templatePath)
+    {
+        using (StreamReader reader = new StreamReader(fileStream))
+        {
+            using (StreamWriter writer = new StreamWriter(fileStream))
+            {
+                string[] lines = templatePath.Split("\n");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    string line = lines[i];
+
+                    if (!line.Contains("EntityName"))
+                    {
+                        writer.WriteLine(line);
+                        continue;
+                    }
+
+                    line = line.Replace("{EntityName}", entityName);
+                    writer.WriteLine(line);
+                }
+            }
+        }
     }
 
     private void SetFields(FileStream fileStream, string entityName, string type, string operation, string templatePath)

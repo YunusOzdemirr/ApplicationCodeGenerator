@@ -1,10 +1,14 @@
 ﻿using AutoMapper;
+using Ecommerce.API.ViewModels.Requests.{EntityName}Requests;
+using Ecommerce.Application.Features.Commands.{EntityName}Commands;
+using Ecommerce.Application.Features.Queries.{EntityName}Queries;
+using Ecommerce.Domain.Common;
+using Ecommerce.Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using IResult = Beryque.Domain.Common.IResult;
+using IResult = Microsoft.AspNetCore.Http.IResult;
 
-namespace Beryque.API.Controllers;
+namespace Ecommerce.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -13,7 +17,7 @@ public class {EntityName}Controller : Controller
     private IMediator _mediator;
     private readonly IMapper _mapper;
 
-    public {EntityNames}Controller(IMediator mediator, IMapper mapper)
+    public {EntityName}Controller(IMediator mediator, IMapper mapper)
     {
         _mediator = mediator;
         _mapper = mapper;
@@ -27,9 +31,9 @@ public class {EntityName}Controller : Controller
         var query = new Get{EntityName}Query() { Id = id };
 
         var result = await _mediator.Send(query);
-        if (result.Succeeded && result.Data != null)
+        if (result != null)
             return Ok(result);
-        if (result.Data == null)
+        if (result == null)
             return NotFound();
         return BadRequest();
     }
@@ -39,13 +43,14 @@ public class {EntityName}Controller : Controller
     [ProducesResponseType(typeof(IResult), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetAll(bool? isActive)
     {
-        var query = new GetAll{EntityNames}Query() { IsActive = isActive };
+        var query = new Search{EntityName}Query()
+        {
+            IsActive = isActive
+        };
         var result = await _mediator.Send(query);
-        if (result.Succeeded && result.Data != null)
+        if (result != null || result.Count < 0)
             return Ok(result);
-        if (result.Data == null)
-            return NotFound();
-        return BadRequest();
+        return NotFound();
     }
 
     [HttpPost]
@@ -54,10 +59,8 @@ public class {EntityName}Controller : Controller
     public async Task<IActionResult> Create([FromForm] Create{EntityName}Request request)
     {
         var command = _mapper.Map<Create{EntityName}Command>(request);
-        var result = await _mediator.Send(command);
-        if (result.Succeeded)
-            return Ok(result);
-        return BadRequest();
+        await _mediator.Send(command);
+        return Ok();
     }
 
 
@@ -68,32 +71,7 @@ public class {EntityName}Controller : Controller
     {
         var command = _mapper.Map<Update{EntityName}Command>(request);
         var result = await _mediator.Send(command);
-        if (result.Succeeded && result.Data != null)
-            return Ok(result);
-        return BadRequest();
-    }
-
-    [HttpPut("{id}/{type}")]
-    [ProducesResponseType(typeof(IResult), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(IResult), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> AddCount(int id, CountType type)
-    {
-        var command = new AddCount{EntityName}Command() { Id = id, CountType = type };
-        var result = await _mediator.Send(command);
-        if (result.Succeeded)
-            return Ok(result);
-        return BadRequest();
-    }
-
-    [HttpPut("ChangeStatus")]
-    [ProducesResponseType(typeof(IResult), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(IResult), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> ChangeStatus(ChangeStatus{EntityName}Command command)
-    {
-        var result = await _mediator.Send(command);
-        if (result.Succeeded)
-            return Ok(result);
-        return BadRequest(result);
+        return Ok();
     }
 
     [HttpDelete]
@@ -103,8 +81,6 @@ public class {EntityName}Controller : Controller
     {
         var command = new Delete{EntityName}Command() { Id = id };
         var result = await _mediator.Send(command);
-        if (result.Succeeded)
-            return Ok(result);
-        return BadRequest();
+        return Ok();
     }
 }
