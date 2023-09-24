@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection.PortableExecutable;
+using System.Text;
 
 namespace ApplicationGenerator.Business;
 
@@ -119,23 +120,21 @@ public class Generator
                               Template.Line;
             if (!Path.Exists(pathCommands))
                 Directory.CreateDirectory(pathCommands);
-            else
-                continue;
             if (!Path.Exists(pathQueries))
                 Directory.CreateDirectory(pathQueries);
-            else
-                continue;
 
             for (int j = 0; j < Template.Commands.Length; j++)
             {
                 var command = Template.Commands[j];
                 var fileName = command + entityName + Template.Types.Command;
                 var commandPath = pathCommands + fileName + ".cs";
+                if (Path.Exists(commandPath))
+                    continue;
                 var fileStream = File.Create(commandPath);
                 SetFields(fileStream, entityName, "Command", command, template);
                 fileStream.Dispose();
                 var fileStreamHandler = File.Create(pathCommands + fileName + "Handler.cs");
-                SetHandler(fileStreamHandler, entityName,command,"Command");
+                SetHandler(fileStreamHandler, entityName, command, "Command");
                 fileStreamHandler.Dispose();
             }
 
@@ -144,6 +143,8 @@ public class Generator
                 var query = Template.Queries[j];
                 var fileName = query + entityName + Template.Types.Query;
                 var queryPath = pathQueries + fileName + ".cs";
+                if (Path.Exists(queryPath))
+                    continue;
                 var fileStream = File.Create(queryPath);
                 SetFields(fileStream, entityName, "Quer", query, template);
                 fileStream.Dispose();
@@ -169,11 +170,13 @@ public class Generator
 
                     if (!line.Contains("EntityName"))
                     {
+                        line = FixWhitespace(line);
                         writer.WriteLine(line);
                         continue;
                     }
 
                     line = line.Replace("{EntityName}", entityName);
+                    line = FixWhitespace(line);
                     writer.WriteLine(line);
                 }
             }
@@ -206,12 +209,14 @@ public class Generator
                         line = line.Replace("{EntityName}", entityName);
                         line = line.Replace("{Crud}", operation);
                         line = line.Replace("{Type}", type);
+                        line = FixWhitespace(line);
                         writer.WriteLine(line);
                         continue;
                     }
 
                     if (!line.Contains("*"))
                     {
+                        line = FixWhitespace(line);
                         writer.WriteLine(line);
                         continue;
                     }
@@ -225,7 +230,7 @@ public class Generator
                     if (operation == "Search")
                     {
                         sb.Append('\n');
-                        sb.Append("    public " + "bool " +"IsActive"+ " { get; set; }");
+                        sb.Append("    public " + "bool " + "IsActive" + " { get; set; }");
                     }
                     if (operation == "Get")
                     {
@@ -237,6 +242,21 @@ public class Generator
                 }
             }
         }
+    }
+    private string FixWhitespace(string generatedCode)
+    {
+        // Boşlukları düzenleme işlemleri burada gerçekleşir
+        // Örneğin, fazla boşlukları düzelten kodu buraya ekleyebilirsiniz.
+
+        // Örnek olarak, her satırdaki başındaki ve sonundaki fazla boşlukları kaldıralım:
+        string[] lines = generatedCode.Split('\n');
+        for (int i = 0; i < lines.Length; i++)
+        {
+            lines[i] = lines[i].Trim(); // Satırın başındaki ve sonundaki boşlukları kaldır
+        }
+
+        // Düzeltilmiş kodu birleştirerek geri döndürün
+        return string.Join('\n', lines);
     }
 
     private void SetHandler(FileStream fileStream, string entityName, string crud, string type)
@@ -278,7 +298,7 @@ public class Generator
                             line = line.Replace("{MethodName}", "GetAllAsync");
                             break;
                     }
-
+                    line = FixWhitespace(line);
                     writer.WriteLine(line);
                 }
             }
