@@ -119,8 +119,12 @@ public class Generator
                               Template.Line;
             if (!Path.Exists(pathCommands))
                 Directory.CreateDirectory(pathCommands);
+            else
+                continue;
             if (!Path.Exists(pathQueries))
                 Directory.CreateDirectory(pathQueries);
+            else
+                continue;
 
             for (int j = 0; j < Template.Commands.Length; j++)
             {
@@ -130,9 +134,9 @@ public class Generator
                 var fileStream = File.Create(commandPath);
                 SetFields(fileStream, entityName, "Command", command, template);
                 fileStream.Dispose();
-                //var fileStreamHandler = File.Create(pathCommands + fileName + "Handler.cs");
-                //SetHandler(fileStreamHandler, entityName);
-                //fileStreamHandler.Dispose();
+                var fileStreamHandler = File.Create(pathCommands + fileName + "Handler.cs");
+                SetHandler(fileStreamHandler, entityName,command,"Command");
+                fileStreamHandler.Dispose();
             }
 
             for (int j = 0; j < Template.Queries.Length; j++)
@@ -218,7 +222,16 @@ public class Generator
                         sb.Append('\n');
                         sb.Append("    public " + property.Value + " " + property.Key + " { get; set; }");
                     }
-
+                    if (operation == "Search")
+                    {
+                        sb.Append('\n');
+                        sb.Append("    public " + "bool " +"IsActive"+ " { get; set; }");
+                    }
+                    if (operation == "Get")
+                    {
+                        sb.Append('\n');
+                        sb.Append("    public " + "int " + "IsActive" + " { get; set; }");
+                    }
                     line = sb.ToString();
                     writer.WriteLine(line);
                 }
