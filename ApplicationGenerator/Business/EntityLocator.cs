@@ -16,7 +16,7 @@ public class EntityLocator
         var sb = new StringBuilder();
         sb.Append(rootProjectName);
         sb.Append(".Domain");
-        sb.Append(@"\\Entities\\");
+        sb.Append(@"/Entities/");
         return sb.ToString();
     }
 

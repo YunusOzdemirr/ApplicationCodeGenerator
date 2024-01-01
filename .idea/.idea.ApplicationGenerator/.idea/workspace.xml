@@ -8,21 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec3a848f-2d36-4dd4-871c-fc7c377fd875" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/8/e/8e0b6f21cb61d8ac319ed60cdbf5fd625b3820ba" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/8/e/8e0b6f21cb61d8ac319ed60cdbf5fd625b3820ba" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/a/0/a0f99109f5df518e84840d2dd915f7b94acb9eee" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/a/0/a0f99109f5df518e84840d2dd915f7b94acb9eee" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ApplicationGenerator/Business/TestControllers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/b/2/b24ef0cb9903831ab3521ae778a73a9223870c27" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/f/f/ff0fbaabb3a0ac94322809630f3881e555ad7885" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/securityhotspotstore/b/2/b24ef0cb9903831ab3521ae778a73a9223870c27" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/securityhotspotstore/f/f/ff0fbaabb3a0ac94322809630f3881e555ad7885" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ApplicationGenerator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ApplicationGenerator/Business/EntityLocator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/Business/EntityLocator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ApplicationGenerator/Business/Generator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/Business/Generator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ApplicationGenerator/Business/Template.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/Business/Template.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ApplicationGenerator/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ApplicationGenerator/Resources/ControllerTemplate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/Resources/ControllerTemplate.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ApplicationGenerator/SourceGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationGenerator/SourceGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +102,7 @@
       <workItem from="1695476398610" duration="128000" />
       <workItem from="1695476567417" duration="156000" />
       <workItem from="1695477129905" duration="201000" />
+      <workItem from="1695566731449" duration="552000" />
     </task>
     <servers />
   </component>

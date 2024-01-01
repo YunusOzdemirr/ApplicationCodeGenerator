@@ -2,15 +2,15 @@
 
 public partial class Template
 {
-    public const string PathApplication = @"C:\\Users\\yunus\\Documents\\GitHub\\beryque\\backend\\Business\\Ecommerce.Application";
-    public const string PathAPI = @"C:\\Users\\yunus\\Documents\\GitHub\\beryque\\backend\\Services\\Ecommerce.API";
-    public const string PathOfApplication = @"C:\\Users\\yunus\\Documents\\GitHub\\ApplicationCodeGenerator\\ApplicationGenerator\\Resources\\";
-    public const string Line = @"\";
+    //public const string PathApplication = @"C:\\Users\\yunus\\Documents\\GitHub\\beryque\\backend\\Business\\Ecommerce.Application";
+    //public const string PathAPI = @"C:\\Users\\yunus\\Documents\\GitHub\\beryque\\backend\\Services\\Ecommerce.API";
+    //public const string PathOfApplication = @"C:\\Users\\yunus\\Documents\\GitHub\\ApplicationCodeGenerator\\ApplicationGenerator\\Resources\\";
+    //public const string Line = @"\";
 
-    //public const string PathApplication = @"/Users/yunus/Documents/GitHub/beryque/backend/Business/Ecommerce.Application";
-    //public const string PathAPI= @"/Users/yunus/Documents/GitHub/beryque/backend/Services/Ecommerce.API";
-    //public const string PathOfApplication = @"/Users/yunus/Documents/GitHub/ApplicationCodeGenerator/ApplicationGenerator/Resources/";
-    //public const char Line = '/';
+    public const string PathApplication = @"/Users/yunus/Documents/GitHub/beryque/backend/Business/Ecommerce.Application";
+    public const string PathAPI = @"/Users/yunus/Documents/GitHub/beryque/backend/Services/Ecommerce.API";
+    public const string PathOfApplication = @"/Users/yunus/Documents/GitHub/ApplicationCodeGenerator/ApplicationGenerator/Resources/";
+    public const char Line = '/';
     //public const string Path = @"/Users/yunus/Documents/GitHub/beryque/Business/Beryque.Application";
     //public const string PathOfApplication = @"/Users/yunus/Documents/GitHub/ApplicationCodeGenerator/ApplicationGenerator/Resources/";
     public static string[] Commands = { "Create", "Update", "Delete" };

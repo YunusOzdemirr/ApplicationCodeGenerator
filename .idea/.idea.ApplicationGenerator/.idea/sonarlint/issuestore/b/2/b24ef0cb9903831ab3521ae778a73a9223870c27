@@ -1,6 +1,6 @@
 
 kcsharpsquid:S1118"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(€ƒ‘L
-{csharpsquid:S3776&"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(“•…úÿÿÿÿ8–­¢‘¬1
-Ecsharpsquid:S1116="Remove this empty statement.(ôŸìúÿÿÿÿ8—­¢‘¬1
+tcsharpsquid:S3776&"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(“•…úÿÿÿÿ
+>csharpsquid:S1116="Remove this empty statement.(ôŸìúÿÿÿÿ
 :csharpsquid:S125
 "Remove this commented out code.(†…±

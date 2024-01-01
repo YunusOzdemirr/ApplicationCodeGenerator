@@ -128,11 +128,11 @@ public class Generator
                 var command = Template.Commands[j];
                 var fileName = command + entityName + Template.Types.Command;
                 var commandPath = pathCommands + fileName + ".cs";
-                if (Path.Exists(commandPath))
-                    continue;
-                var fileStream = File.Create(commandPath);
-                SetFields(fileStream, entityName, "Command", command, template);
-                fileStream.Dispose();
+                //if (Path.Exists(commandPath))
+                //    continue;
+                //var fileStream = File.Create(commandPath);
+                //SetFields(fileStream, entityName, "Command", command, template);
+                //fileStream.Dispose();
                 var fileStreamHandler = File.Create(pathCommands + fileName + "Handler.cs");
                 SetHandler(fileStreamHandler, entityName, command, "Command");
                 fileStreamHandler.Dispose();
@@ -143,11 +143,11 @@ public class Generator
                 var query = Template.Queries[j];
                 var fileName = query + entityName + Template.Types.Query;
                 var queryPath = pathQueries + fileName + ".cs";
-                if (Path.Exists(queryPath))
-                    continue;
-                var fileStream = File.Create(queryPath);
-                SetFields(fileStream, entityName, "Quer", query, template);
-                fileStream.Dispose();
+                //if (Path.Exists(queryPath))
+                //    continue;
+                //var fileStream = File.Create(queryPath);
+                //SetFields(fileStream, entityName, "Quer", query, template);
+                //fileStream.Dispose();
                 var fileStreamHandler = File.Create(pathQueries + fileName + "Handler.cs");
                 SetHandler(fileStreamHandler, entityName, query, "Query");
                 fileStreamHandler.Dispose();
